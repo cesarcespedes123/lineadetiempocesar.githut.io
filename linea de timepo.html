@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Línea de Tiempo Empresarial</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('postcards-7865295.jpg') no-repeat center center fixed;
+      background-size: cover;
+      padding: 40px 20px;
+      margin: 0;
+    }
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 60px;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px #000;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 1100px;
+      margin: auto;
+      padding-bottom: 40px;
+    }
+
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 4px;
+      background-color: #3498db;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .container {
+      padding: 20px 40px;
+      position: relative;
+      width: 50%;
+    }
+
+    .left { left: 0; }
+    .right { left: 50%; }
+
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 25px;
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      border: 4px solid #3498db;
+      border-radius: 50%;
+      z-index: 1;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      position: relative;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .content:hover { transform: scale(1.02); }
+
+    .content h3 {
+      color: #2980b9;
+      margin-top: 0;
+    }
+
+    .content p {
+      margin-bottom: 0;
+    }
+
+    .image-section {
+      margin-top: 15px;
+      display: none;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    .image-section img {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @media screen and (max-width: 768px) {
+      .timeline::after { left: 30px; }
+      .container {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+      .right { left: 0; }
+      .container::before {
+        left: 30px;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<h1>Línea de Tiempo de la Evolución Empresarial</h1>
+
+<div class="timeline">
+
+  <div class="container left">
+    <div class="content" onclick="toggleImage(this)">
+      <h3>Edad Antigua</h3>
+      <p>Trueque, comercio primitivo, gremios simples en civilizaciones como Egipto, Roma y Grecia.</p>
+      <div class="image-section">
+        <img src="tuscany-2814440_1920.jpg" alt="Edad Antigua">
+      </div>
+    </div>
+  </div>
+
+  <div class="container right">
+    <div class="content" onclick="toggleImage(this)">
+      <h3>Edad Media</h3>
+      <p>Gremios artesanales, ferias comerciales y aparición de los primeros bancos en Europa.</p>
+      <div class="image-section">
+        <img src="knights-811800.jpg" alt="Edad Media">
+      </div>
+    </div>
+  </div>
+
+  <div class="container left">
+    <div class="content" onclick="toggleImage(this)">
+      <h3>Edad Moderna</h3>
+      <p>Compañías comerciales como la de Indias Orientales. Expansión del capitalismo mercantil.</p>
+      <div class="image-section">
+        <img src="castle-7560776.jpg" alt="Edad Moderna">
+      </div>
+    </div>
+  </div>
+
+  <div class="container right">
+    <div class="content" onclick="toggleImage(this)">
+      <h3>Revolución Industrial</h3>
+      <p>Producción masiva, fábricas, empresa moderna y crecimiento del empleo asalariado.</p>
+      <div class="image-section">
+        <img src="antique-car-60521_1920.jpg" alt="Revolución Industrial">
+      </div>
+    </div>
+  </div>
+
+  <div class="container left">
+    <div class="content" onclick="toggleImage(this)">
+      <h3>Siglo XX</h3>
+      <p>Corporaciones globales, marketing, derechos laborales y tecnologías modernas.</p>
+      <div class="image-section">
+        <img src="revolution-4985791.jpg" alt="Siglo XX">
+      </div>
+    </div>
+  </div>
+
+  <div class="container right">
+    <div class="content" onclick="toggleImage(this)">
+      <h3>Finales del Siglo XX</h3>
+      <p>Empresas tecnológicas, internet, digitalización y comercio electrónico.</p>
+      <div class="image-section">
+        <img src="building-2813980.jpg" alt="Finales Siglo XX">
+      </div>
+    </div>
+  </div>
+
+  <div class="container left">
+    <div class="content" onclick="toggleImage(this)">
+      <h3>Siglo XXI - Actualidad</h3>
+      <p>Startups, inteligencia artificial, sostenibilidad y trabajo remoto globalizado.</p>
+      <div class="image-section">
+        <img src="modern-building-4428918.jpg" alt="Actualidad">
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function toggleImage(element) {
+    const allImages = document.querySelectorAll('.image-section');
+    allImages.forEach(img => {
+      if (img !== element.querySelector('.image-section')) img.style.display = 'none';
+    });
+
+    const imageSection = element.querySelector('.image-section');
+    imageSection.style.display = imageSection.style.display === 'block' ? 'none' : 'block';
+  }
+</script>
+
+</body>
+</html>
